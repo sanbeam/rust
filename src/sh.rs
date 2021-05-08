@@ -483,3 +483,25 @@ pub fn number_guessing()
 
     }
 }
+
+fn print_value(x:i32) {
+    println!("Value = {}", x);
+}
+
+fn increase(x: &mut i32) {
+    *x += 1;
+}
+
+fn product(x: i32, y:i32) -> i32 {
+    x * y
+}
+
+pub fn function() {
+    print_value(32);
+    let mut z = 1;
+    increase(&mut z);
+    print_value(z);
+
+    print_value(product(3,5));
+}
+

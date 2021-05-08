@@ -215,7 +215,9 @@ fn main() {
 
     // sh::strings();
 
-    sh::number_guessing();
+    // sh::number_guessing();
+
+    sh::function();
 }
 
 

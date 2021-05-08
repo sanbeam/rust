@@ -221,7 +221,9 @@ fn main() {
 
     // sh::methods();
 
-    sh::closures();
+    // sh::closures();
+
+    sh::higher_order_functions();
 }
 
 

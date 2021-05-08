@@ -531,13 +531,69 @@ pub fn closures() {
     let a = 6;
     println!("{} + {} = {}", a, 1, plus_one(a));
 
-    let plus_two = |x| -> i32
-        {
-            let mut z = x;
-            z += 2;
-            z
-        };
+    let mut seven = 7;
+    {
+        let plus_seven = |x| -> i32
+            {
+                let mut z = x;
+                z += seven;
+                z
+            };
+        println!("{} + {} = {}", a, seven, plus_seven(a));
+    }
 
-    println!("{} + {} = {}", a, 2, plus_two(a));
+    let borrow_7 = &mut seven;
+
+    let plus_three = |x: &mut i32| *x += 3;
+    let mut f = 12;
+    plus_three(&mut f);
+    println!("f = {}", f);
+
+    let plus_five = |mut x: i32| x += 5;
+    let mut e = 12;
+    plus_five(e);
+    println!("e = {}", e);
+}
+
+fn is_even(x:u32) -> bool {
+    x %2 == 0
+}
+
+fn gt(limit: u32)
+    -> impl Fn(u32) -> bool
+{
+    move |y| y > limit
+}
+
+pub fn higher_order_functions() {
+
+    //functions that take or return functions
+    let limit = 500;
+    let mut sum = 0;
+
+    let al = gt(limit);
+
+    for i in 0.. {
+        let isq = i*i;
+
+        if al(isq) {
+            break;
+        }
+        else if is_even(isq){
+            sum += isq;
+        }
+    }
+    println!("loop sum {}", sum);
+
+
+    let sum2 = (0..)
+        .map(|x| x*x)
+        .take_while(|&x| x < limit)
+        .filter(|x: &u32| is_even(*x))
+        .fold(0, |sum, x| sum+x);
+
+    println!("loop sum {}", sum2);
 
 }
+
+

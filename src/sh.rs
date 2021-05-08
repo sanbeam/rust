@@ -33,13 +33,27 @@ struct Line<T>
     end: Point1<T>
 }
 
+struct Line1 {
+    start: Point,
+    end: Point
+}
+
+impl Line1 {
+
+    fn length(&self) {
+        let dx = self.start.x - self.end.x;
+        let dy = self.start.y - self.end.y;
+        let len = ((dx * dx) + (dy * dy)).sqrt();
+        println!("{} Len of Line", len);
+    }
+
+}
+
 pub fn generics()
 {
     let a = Point1{x:0.0, y:4f64};
     let b = Point1{x: 1.2, y: 3.4};
-
     let line = Line{start: a, end: b};
-
 }
 
 enum Color {
@@ -504,4 +518,13 @@ pub fn function() {
 
     print_value(product(3,5));
 }
+
+pub fn methods(){
+    let a = Point{x:0.0, y:4f64};
+    let b = Point{x: 1.2, y: 3.4};
+    let line = Line1{start: a, end: b};
+    line.length();
+}
+
+
 

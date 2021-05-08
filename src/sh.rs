@@ -526,5 +526,18 @@ pub fn methods(){
     line.length();
 }
 
+pub fn closures() {
+    let plus_one = |x:i32| -> i32 {x + 1};
+    let a = 6;
+    println!("{} + {} = {}", a, 1, plus_one(a));
 
+    let plus_two = |x| -> i32
+        {
+            let mut z = x;
+            z += 2;
+            z
+        };
 
+    println!("{} + {} = {}", a, 2, plus_two(a));
+
+}

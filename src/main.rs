@@ -219,7 +219,9 @@ fn main() {
 
     // sh::function();
 
-    sh::methods();
+    // sh::methods();
+
+    sh::closures();
 }
 
 

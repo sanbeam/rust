@@ -225,8 +225,12 @@ fn main() {
 
     // sh::higher_order_functions();
 
-    sh::traits();
+    // sh::traits();
+
+    sh::trait_params();
 }
+
+
 
 
 

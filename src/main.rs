@@ -165,24 +165,24 @@ fn process(iof: IOF){
     }
 }
 
-struct Person
+struct Person<'a>
 {
-    name: String
+    name: &'a str
 }
 
-impl Person
+impl<'a> Person<'a>
 {
-    fn get_ref_name(&self) -> &String
+    fn talk(&self)
     {
-        &self.name
+        println!("Hi ! My Name is {}", self.name);
     }
 }
 
-struct Company<'a>
-{
-    name: String,
-    ceo: &'a Person
-}
+// struct Company<'a>
+// {
+//     name: &str,
+//     ceo: &'a Person
+// }
 
 
 fn main() {
@@ -261,7 +261,7 @@ fn main() {
 
     // sh::vectortest();
 
-    let v = vec![3,2,1];
+    // let v = vec![3,2,1];
     // let v2 = v;
     //cannot use
     // println!("{:?}", v);
@@ -299,15 +299,22 @@ fn main() {
     //     // z.push(5);
     // }
 
-    let boss = Person{name: String::from("Sanjeev")};
-    let tesla = Company{name: String::from("Samruddhi"), ceo: &boss};
+    // let boss = Person{name: String::from("Sanjeev")};
+    // let tesla = Company{name: String::from("Samruddhi"), ceo: &boss};
+    //
+    // println!("{:?}", tesla.name);
+    //
+    // let mut z: &String;
+    // {
+    //     let p = Person{ name: String::from("Sanjeev")};
+    //     z = p.get_ref_name();
+    // }
 
-    println!("{:?}", tesla.name);
+    let person = Person {name: "Sanjeev"};
 
-    let mut z: &String;
-    {
-        let p = Person{ name: String::from("Sanjeev")};
-        z = p.get_ref_name();
-    }
+    person.talk();
+
+
+
 
 }

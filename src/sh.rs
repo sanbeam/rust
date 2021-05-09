@@ -922,3 +922,35 @@ pub fn dyn_dispatch()
     }
 }
 
+enum Creatures
+{
+    Human(Human),
+    Cat(Cat)
+}
+
+pub fn vectortest()
+{
+    let mut creatures = Vec::new();
+
+    // creatures.push(Human{name: "Sanjeev"});
+    // creatures.push(Cat{name: "BA"});
+
+    creatures.push(Creatures::Human(
+            Human{name: "Sanjeev"}
+    ));
+    creatures.push(Creatures::Cat(
+        Cat{name: "BA"}
+    ));
+
+    for c in creatures {
+        match c {
+
+            Creatures::Human(h) => h.talk(),
+            Creatures::Cat(c) => c.talk()
+
+        }
+    }
+
+
+}
+

@@ -237,5 +237,7 @@ fn main() {
 
     // sh::static_dispatch();
 
-    sh::dyn_dispatch();
+    // sh::dyn_dispatch();
+
+    sh::vectortest();
 }

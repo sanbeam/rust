@@ -5,7 +5,7 @@ use std::mem;
 use rand::Rng;
 use std::io::stdin;
 use std::fmt::Debug;
-use std::ops::{Add};
+use std::ops::{Add, AddAssign, Neg};
 
 use std::collections::HashMap;
 use std::collections::HashSet;
@@ -790,8 +790,10 @@ impl<T> Complex<T> {
     }
 }
 
-impl Add for Complex<i32> {
-    type Output = Complex<i32>;
+impl<T> Add for Complex<T>
+    where T: Add<Output = T>
+{
+    type Output = Complex<T>;
     //a+b
     fn add(self, rhs: Self) -> Self::Output {
         Complex {
@@ -802,15 +804,57 @@ impl Add for Complex<i32> {
 }
 
 
+impl<T> AddAssign for Complex<T>
+    where T: AddAssign<T>
+{
+    //a+=b
+    fn add_assign(&mut self, rhs: Self) {
+        self.re += rhs.re;
+        self.im += rhs.im;
+    }
+}
+
+impl<T> Neg for Complex<T>
+    where T: Neg<Output = T>
+{
+    type Output = Complex<T>;
+    //-a
+    fn neg(self) -> Self::Output {
+        Complex {
+            re: -self.re,
+            im: -self.im
+        }
+    }
+}
+
+impl<T> PartialEq for Complex<T>
+    where T: PartialEq
+{
+    fn eq(&self, rhs: &Self) -> bool {
+        return (self.re==rhs.re && self.im==rhs.im);
+    }
+}
+
+impl<T: Eq> Eq for Complex<T> where T: Eq {}
+
 
 
 pub fn opoverload()
 {
-    let mut a = Complex::new(1, 2);
-    let mut b = Complex::new(3, 4);
+    let mut a = Complex::new(1.0, 2.0);
+    let mut b = Complex::new(3.0, 4.0);
 
     println!("{:?}", a);
     println!("{:?}", b);
 
-    println!("{:?}", a + b);
+    // println!("{:?}", a + b);
+
+    // a += b;
+    // println!("{:?}", a);
+
+    // println!("{:?}", -a);
+
+
+    println!("{}", a==a);
+
 }

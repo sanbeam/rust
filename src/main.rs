@@ -251,19 +251,31 @@ fn main() {
         // let foo = |v: Vec<i32>| ();
         // foo(v);
     }
-    println!("{:?}", v);
+    // println!("{:?}", v);
+    //
+    // let u = Box::new(1);
+    // let u2 = &u;
+    // println!("u = {}", *u);
 
-    let u = Box::new(1);
-    let u2 = &u;
-    println!("u = {}", *u);
-
-    let print_vector = |x:Vec<i32>| -> Vec<i32>
+    let print_vector = |x:&Vec<i32>|
         {
             println!("{:?}", x);
-            x
         };
 
-    let vv = print_vector(v);
-    println!("{}", vv[0]);
+    print_vector(&v);
+    println!("{:?}", v);
 
+    let mut a = 40;
+    let b = &mut a;
+    // let c = &a;
+    *b += 2;
+    println!("{}", a);
+
+    let mut z = vec![3,2,1];
+
+    for i in &z
+    {
+        println!("i = {}", i);
+        // z.push(5);
+    }
 }

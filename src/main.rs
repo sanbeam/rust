@@ -227,7 +227,9 @@ fn main() {
 
     // sh::traits();
 
-    sh::trait_params();
+    // sh::trait_params();
+
+    sh::into_traits();
 }
 
 

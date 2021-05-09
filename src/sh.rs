@@ -5,6 +5,7 @@ use std::mem;
 use rand::Rng;
 use std::io::stdin;
 use std::fmt::Debug;
+use std::ops::{Add};
 
 use std::collections::HashMap;
 use std::collections::HashSet;
@@ -773,4 +774,43 @@ pub fn droptest() {
         println!("end of scope");
     }
     println!("{}", clever.name);
+}
+
+#[derive(Debug)]
+struct Complex<T>
+{
+    re: T,
+    im: T
+
+}
+
+impl<T> Complex<T> {
+    fn new(re: T, im: T) ->Complex<T> {
+        Complex::<T> {re, im}
+    }
+}
+
+impl Add for Complex<i32> {
+    type Output = Complex<i32>;
+    //a+b
+    fn add(self, rhs: Self) -> Self::Output {
+        Complex {
+            re: self.re + rhs.re,
+            im: self.im + rhs.im
+        }
+    }
+}
+
+
+
+
+pub fn opoverload()
+{
+    let mut a = Complex::new(1, 2);
+    let mut b = Complex::new(3, 4);
+
+    println!("{:?}", a);
+    println!("{:?}", b);
+
+    println!("{:?}", a + b);
 }

@@ -231,7 +231,9 @@ fn main() {
 
     // sh::into_traits();
 
-    sh::droptest();
+    // sh::droptest();
+
+    sh::opoverload();
 }
 
 

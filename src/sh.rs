@@ -55,7 +55,7 @@ pub fn generics()
 {
     let a = Point1{x:0.0, y:4f64};
     let b = Point1{x: 1.2, y: 3.4};
-    let line = Line{start: a, end: b};
+    let _line = Line{start: a, end: b};
 }
 
 enum Color {
@@ -231,7 +231,7 @@ fn how_many(x:i32) -> &'static str
         0 => "no",
         1|2 => "one or two",
         12 => "a dozen",
-        9...11 => "lots of",
+        9..=11 => "lots of",
         _ if(x%2 == 0) => "some",
         _ => "a few"
     }
@@ -431,7 +431,7 @@ pub fn strings(){
     println!("{}", u);
 
     //concat
-    let z = letters + "abc";
+    let _z = letters + "abc";
 
     let mut abc = "hello world".to_string();
     abc.remove(0);
@@ -544,15 +544,15 @@ pub fn closures() {
         println!("{} + {} = {}", a, seven, plus_seven(a));
     }
 
-    let borrow_7 = &mut seven;
+    let _borrow_7 = &mut seven;
 
     let plus_three = |x: &mut i32| *x += 3;
     let mut f = 12;
     plus_three(&mut f);
     println!("f = {}", f);
 
-    let plus_five = |mut x: i32| x += 5;
-    let mut e = 12;
+    let plus_five = |mut _x: i32| _x += 5;
+    let e = 12;
     plus_five(e);
     println!("e = {}", e);
 }
@@ -690,13 +690,13 @@ trait Shape {
 
 impl Shape for Circle {
     fn area(&self) -> f64 {
-        return (3.14 * self.radius * self.radius);
+        3.14 * self.radius * self.radius
     }
 }
 
 impl Shape for Square {
     fn area(&self) -> f64 {
-        return (self.side * self.side);
+        self.side * self.side
     }
 }
 
@@ -739,11 +739,11 @@ impl Person {
 pub fn into_traits()
 {
     //Into
-    let john = Person::new("John");
+    let _john = Person::new("John");
 
     let name: String = "Jane".to_string();
     // let jane = Person::new(name.as_ref());
-    let jane = Person::new(name);
+    let _jane = Person::new(name);
 }
 
 
@@ -766,7 +766,7 @@ impl Drop for Creature {
 }
 
 pub fn droptest() {
-    let mut clever: Creature;
+    let clever: Creature;
     {
         let goblin = Creature::new("Jeoff");
         println!("Game proceeds");
@@ -831,7 +831,7 @@ impl<T> PartialEq for Complex<T>
     where T: PartialEq
 {
     fn eq(&self, rhs: &Self) -> bool {
-        return (self.re==rhs.re && self.im==rhs.im);
+        self.re==rhs.re && self.im==rhs.im
     }
 }
 
@@ -841,8 +841,8 @@ impl<T: Eq> Eq for Complex<T> where T: Eq {}
 
 pub fn opoverload()
 {
-    let mut a = Complex::new(1.0, 2.0);
-    let mut b = Complex::new(3.0, 4.0);
+    let  a = Complex::new(1.0, 2.0);
+    let b = Complex::new(3.0, 4.0);
 
     println!("{:?}", a);
     println!("{:?}", b);

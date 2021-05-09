@@ -884,6 +884,13 @@ fn print_it<T: Printable>(z: T)
 // the decision on which one to call
 // happens at compiletime.
 
+
+fn print_it_2(z: &Printable)
+{
+    println!("{}", z.format());
+}
+
+
 pub fn static_dispatch()
 {
     let a = 123;
@@ -892,6 +899,10 @@ pub fn static_dispatch()
     println!("{}", a.format());
     println!("{}", b.format());
 
-    print_it(a);
-    print_it(b);
+    // print_it(a);
+    // print_it(b);
+
+    print_it_2(&a);
+    print_it_2(&b);
+
 }

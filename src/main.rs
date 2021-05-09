@@ -165,6 +165,26 @@ fn process(iof: IOF){
     }
 }
 
+struct Person
+{
+    name: String
+}
+
+impl Person
+{
+    fn get_ref_name(&self) -> &String
+    {
+        &self.name
+    }
+}
+
+struct Company<'a>
+{
+    name: String,
+    ceo: &'a Person
+}
+
+
 fn main() {
     println!("Hello World");
     // allowed_data_types();
@@ -257,25 +277,37 @@ fn main() {
     // let u2 = &u;
     // println!("u = {}", *u);
 
-    let print_vector = |x:&Vec<i32>|
-        {
-            println!("{:?}", x);
-        };
+    // let print_vector = |x:&Vec<i32>|
+    //     {
+    //         println!("{:?}", x);
+    //     };
+    //
+    // print_vector(&v);
+    // println!("{:?}", v);
+    //
+    // let mut a = 40;
+    // let b = &mut a;
+    // // let c = &a;
+    // *b += 2;
+    // println!("{}", a);
+    //
+    // let mut z = vec![3,2,1];
+    //
+    // for i in &z
+    // {
+    //     println!("i = {}", i);
+    //     // z.push(5);
+    // }
 
-    print_vector(&v);
-    println!("{:?}", v);
+    let boss = Person{name: String::from("Sanjeev")};
+    let tesla = Company{name: String::from("Samruddhi"), ceo: &boss};
 
-    let mut a = 40;
-    let b = &mut a;
-    // let c = &a;
-    *b += 2;
-    println!("{}", a);
+    println!("{:?}", tesla.name);
 
-    let mut z = vec![3,2,1];
-
-    for i in &z
+    let mut z: &String;
     {
-        println!("i = {}", i);
-        // z.push(5);
+        let p = Person{ name: String::from("Sanjeev")};
+        z = p.get_ref_name();
     }
+
 }

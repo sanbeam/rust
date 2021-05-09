@@ -217,7 +217,7 @@ fn main() {
 
     // sh::number_guessing();
 
-    // sh::function();
+    // sh::functions();
 
     // sh::methods();
 
@@ -239,5 +239,31 @@ fn main() {
 
     // sh::dyn_dispatch();
 
-    sh::vectortest();
+    // sh::vectortest();
+
+    let v = vec![3,2,1];
+    // let v2 = v;
+    //cannot use
+    // println!("{:?}", v);
+
+    //wont work
+    {
+        // let foo = |v: Vec<i32>| ();
+        // foo(v);
+    }
+    println!("{:?}", v);
+
+    let u = Box::new(1);
+    let u2 = &u;
+    println!("u = {}", *u);
+
+    let print_vector = |x:Vec<i32>| -> Vec<i32>
+        {
+            println!("{:?}", x);
+            x
+        };
+
+    let vv = print_vector(v);
+    println!("{}", vv[0]);
+
 }

@@ -229,8 +229,11 @@ fn main() {
 
     // sh::trait_params();
 
-    sh::into_traits();
+    // sh::into_traits();
+
+    sh::droptest();
 }
+
 
 
 

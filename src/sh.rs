@@ -744,3 +744,33 @@ pub fn into_traits()
     // let jane = Person::new(name.as_ref());
     let jane = Person::new(name);
 }
+
+
+
+struct Creature {
+    name: String
+}
+
+impl Creature {
+    fn new(name: &str) -> Creature {
+        println!("{} enters the game", name);
+        Creature{name : name.into()}
+    }
+}
+
+impl Drop for Creature {
+    fn drop(&mut self) {
+        println!("{} leaves the game", self.name);
+    }
+}
+
+pub fn droptest() {
+    let mut clever: Creature;
+    {
+        let goblin = Creature::new("Jeoff");
+        println!("Game proceeds");
+        clever = goblin;
+        println!("end of scope");
+    }
+    println!("{}", clever.name);
+}

@@ -233,14 +233,7 @@ fn main() {
 
     // sh::droptest();
 
-    sh::opoverload();
+    // sh::opoverload();
+
+    sh::static_dispatch();
 }
-
-
-
-
-
-
-
-
-

@@ -837,8 +837,6 @@ impl<T> PartialEq for Complex<T>
 
 impl<T: Eq> Eq for Complex<T> where T: Eq {}
 
-
-
 pub fn opoverload()
 {
     let  a = Complex::new(1.0, 2.0);
@@ -857,4 +855,43 @@ pub fn opoverload()
 
     println!("{}", a==a);
 
+}
+
+trait Printable
+{
+    fn format(&self) -> String;
+}
+
+impl Printable for i32 {
+    fn format(&self) -> String
+    {
+        format!("i32 = {}", *self)
+    }
+}
+
+impl Printable for String {
+    fn format(&self) -> String
+    {
+        format!("String = {}", *self)
+    }
+}
+
+fn print_it<T: Printable>(z: T)
+{
+    println!("{}", z.format())
+}
+//we get two functins here
+// the decision on which one to call
+// happens at compiletime.
+
+pub fn static_dispatch()
+{
+    let a = 123;
+    let b = "Hello".to_string();
+
+    println!("{}", a.format());
+    println!("{}", b.format());
+
+    print_it(a);
+    print_it(b);
 }

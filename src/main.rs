@@ -223,7 +223,9 @@ fn main() {
 
     // sh::closures();
 
-    sh::higher_order_functions();
+    // sh::higher_order_functions();
+
+    sh::traits();
 }
 
 

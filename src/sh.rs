@@ -4,6 +4,7 @@
 use std::mem;
 use rand::Rng;
 use std::io::stdin;
+use std::fmt::Debug;
 
 use std::collections::HashMap;
 use std::collections::HashSet;
@@ -673,4 +674,47 @@ pub fn traits()
     println!("sum = {}", a.sum());
 
 }
+
+#[derive(Debug)]
+struct Circle {
+    radius: f64
+}
+#[derive(Debug)]
+struct Square {
+    side: f64
+}
+trait Shape {
+    fn area(&self) -> f64;
+}
+
+impl Shape for Circle {
+    fn area(&self) -> f64 {
+        return (3.14 * self.radius * self.radius);
+    }
+}
+
+impl Shape for Square {
+    fn area(&self) -> f64 {
+        return (self.side * self.side);
+    }
+}
+
+// fn print_area(shape: impl Shape + Debug)
+// fn print_area<T: Shape + Debug>(shape: T)
+fn print_area<T>(shape: T)
+    where T: Shape + Debug
+{
+    println!("{:?}", shape);
+    println!("The area is {}", shape.area());
+}
+
+pub fn trait_params()
+{
+    let c = Circle{radius: 98f64};
+    print_area(c);
+
+
+
+}
+
 

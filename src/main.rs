@@ -235,5 +235,7 @@ fn main() {
 
     // sh::opoverload();
 
-    sh::static_dispatch();
+    // sh::static_dispatch();
+
+    sh::dyn_dispatch();
 }

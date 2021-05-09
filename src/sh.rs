@@ -690,7 +690,7 @@ trait Shape {
 
 impl Shape for Circle {
     fn area(&self) -> f64 {
-        3.14 * self.radius * self.radius
+        std::f64::consts::PI * self.radius * self.radius
     }
 }
 
@@ -906,3 +906,19 @@ pub fn static_dispatch()
     print_it_2(&b);
 
 }
+
+pub fn dyn_dispatch()
+{
+    let shapes:[&Shape; 4] = [
+        &Circle{radius: 1.0},
+        &Square{side: 2.0},
+        &Circle{radius: 3.0},
+        &Square{side: 4.0}
+    ];
+
+    for (i,shape) in shapes.iter().enumerate()
+    {
+        println!("Area of #{} is {}", i, shape.area());
+    }
+}
+

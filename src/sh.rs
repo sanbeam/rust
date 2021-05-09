@@ -951,6 +951,11 @@ pub fn vectortest()
         }
     }
 
+    let mut animals:Vec<Box<Animal>>  = Vec::new();
+    animals.push(Box::new(Human{name: "Sanjeev"}));
+    animals.push(Box::new(Cat{name: "BA"}));
+
+
 
 }
 
